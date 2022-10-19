@@ -1,0 +1,4 @@
+edit-project settings-script execution order에 스크립트를 넣으면 순서를 정할 수 있다.
+
+코루틴은 업데이트에 넣으면 안됨
+업데이트에 넣으면 코루틴이 또 생성되어버림
