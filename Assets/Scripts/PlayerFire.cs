@@ -61,7 +61,7 @@ public class PlayerFire : MonoBehaviour
                 Debug.Log("발사");
                 m_LinkLineCom.gameObject.SetActive(true);
                 Vector3 frontpos = new Vector3(0, 0, 1);
-                frontpos = transform.rotation* frontpos;
+                frontpos = transform.rotation * frontpos;
                 Vector3 endpos = GunEndTran.position + GunEndTran.forward * 100f;
                 //Physics.RaycastAll 선상에 있는 모든 물체 정보 불러옴
 
@@ -73,7 +73,12 @@ public class PlayerFire : MonoBehaviour
                     if (hitinfo.transform.tag == "Mob")
                     {
                         //hitinfo.transform.GetComponent<Animator>();
-                        GameObject.Destroy(hitinfo.transform.gameObject);
+                        //GameObject.Destroy(hitinfo.transform.gameObject);
+                        MobStat stat = hitinfo.transform.GetComponent<MobStat>();
+                        if(stat != null)
+                        {
+                            stat.SetDamage(1);
+                        }
                     }
 
                     endpos = hitinfo.point;
